@@ -6,9 +6,9 @@
 #            Pterodactyl Installer, Updater, Remover and More          #
 #            Copyright 2025, Malthe K, <me@malthe.cc> hej              # 
 #  https://github.com/guldkage/Pterodactyl-Installer/blob/main/LICENSE #
-#                                                                      #
+#                                                                 #
 #  This script is not associated with the official Pterodactyl Panel.  #
-#  You may not remove this line                                        #
+#  You may not remove this line and ThanksToo Xlilnyx                                   #
 #                                                                      #
 ########################################################################
 
